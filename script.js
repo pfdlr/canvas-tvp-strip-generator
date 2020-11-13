@@ -37,7 +37,7 @@ setCanvasDimentions();
 
 window.addEventListener('resize', () => {
     setCanvasDimentions();
-    render();
+    draw();
 })
 
 /* **Handlers for version with generate button and enter key** */
@@ -57,7 +57,7 @@ input.addEventListener('input', (e) => {
     e.preventDefault();
     console.log(e.target.value)
     tx = e.target.value
-    render();
+    draw();
 })
 
 // Clear input and rendered text
@@ -65,13 +65,8 @@ clear.addEventListener('click', (e) => {
     e.preventDefault();
     tx = "";
     input.value = "";
-    render();
-})
-
-const render = () => {
-    generate.style.display = "none"; //hide generate button
     draw();
-}
+})
 
 const imgWidth = setWidth() || widthCanvas;
 const imgHeight = setHeight(ratio) || heightCanvas;
