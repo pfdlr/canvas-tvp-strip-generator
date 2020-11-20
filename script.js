@@ -1,27 +1,38 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
+const chooseImage = document.querySelector('.choose-image');
+
 const generate = document.getElementById("generate-button");
 generate.style.display = "none"; //hide generate buuton
 const clear = document.getElementById("clear-button");
 const input = document.querySelector('input#tx')
 let tx;
-
-const widthCanvas = 1120;
-const heightCanvas = 700;
+let setImage = 'ma.jpg';
+const widthCanvas = 1008;
+const heightCanvas = 630;
 const factor = () => widthCanvas / heightCanvas;
 const ratio = factor();
 
+chooseImage.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setImage = e.target.getAttribute('src');
+
+
+    draw();
+})
+
+
 const setWidth = () => {
     if (window.innerWidth < widthCanvas) {
-        console.log("Szerokosc :", window.innerWidth);
+        //console.log("Szerokosc :", window.innerWidth);
         return window.innerWidth
     }
 
 }
 const setHeight = (ratio) => {
     if (window.innerWidth < widthCanvas) {
-        console.log("Wysokosc :", window.innerWidth / ratio);
+        //console.log("Wysokosc :", window.innerWidth / ratio);
         return window.innerWidth / ratio
     }
 }
@@ -29,7 +40,7 @@ const setHeight = (ratio) => {
 
 const setCanvasDimentions = () => {
 
-    console.log(ratio)
+    //console.log(ratio)
     canvas.width = setWidth() || widthCanvas;
     canvas.height = setHeight(ratio) || heightCanvas;
 }
@@ -55,7 +66,7 @@ input.addEventListener('keyup', (e) => {
 // live writing
 input.addEventListener('input', (e) => {
     e.preventDefault();
-    console.log(e.target.value)
+    //console.log(e.target.value)
     tx = e.target.value
     draw();
 })
@@ -80,13 +91,13 @@ const draw = () => {
             }
 
         };
-        img.src = "./mx.jpg"
+        img.src = setImage;
     }
     else {
         console.log("ERROR");
     }
 }
-
+let stripX = canvas.width
 const text = (tx) => {
     console.log(tx);
     ctx.fillStyle = '#fff';
