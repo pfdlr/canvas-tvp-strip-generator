@@ -5,35 +5,45 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
+body {
+    background-color: #bbc1c5;
+}
 .container {
     max-width: 1200px;
     margin: auto;
+    display: flex;
+    background-color: #93b8d1;
 }
 .images-wrapper {
-    display:flex
+    display: flex;
+    flex-direction: column;
+}
+.speaker {
+    text-align: center;
 }
 .choose-image {
-    width:180px;
+    width: 180px;
+    margin: 0 auto;
+    padding: 5px;
 }
 .choose-image img {
-    width:100%;
+    width: 100%;
 }
 .active {
     border: 2px solid red;
 }
 
 canvas {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 15px;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 95%;
 }
-.form-wrapper {
-    margin-top: 10px;
-}
-.form-wrapper .form {
-    height: 100px;
+/* .wrapper {
+    background-color: #93b8d1;
+} */
+.wrapper .form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,24 +53,30 @@ canvas {
 label {
     text-transform: uppercase;
     font-size: 20px;
+    margin: 3px 0;
 }
 input[type="text"] {
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 20px;
+    text-align: center;
     background-color: #fafafa;
     border: none;
     color: #000000;
     outline: none;
-    width: 200px;
-    width: 400px;
+    width: 90%;
     border: 1px solid gray;
     text-transform: uppercase;
     margin: auto;
 }
-button {
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+button,
+#save-button {
     width: 100px;
     height: 30px;
-    margin: auto;
+    margin: 10px;
     background-color: green;
     color: white;
     border: 2px solid gray;

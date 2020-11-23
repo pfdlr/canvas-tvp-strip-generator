@@ -11,19 +11,24 @@
 <body>
     <div class="container">
         <div class="images-wrapper">
-        <div class="choose-image">
-            <img src="ma.jpg" class=""/>
-            <img src="dh.jpg" class=""/>
-            <img src="el.jpg" class=""/>
+            <p class="speaker">Wybierz ulubionego prezentera</p>
+            <div class="choose-image">
+                <img src="ma.jpg" class="" />
+                <img src="dh.jpg" class="" />
+                <img src="el.jpg" class="" />
+            </div>
+
         </div>
-        <canvas id="myCanvas"></canvas>
-        </div>
-        <div class="form-wrapper">
+
+        <div class="wrapper">
+            <canvas id="myCanvas"></canvas>
             <form id="tx" class="form">
                 <label for="tx">Wpisz treśc paska</label>
                 <input name="tx" id="tx" type="text" value="" placeholder="" required />
-                <button id="generate-button">Generuj</button>
-                <button id="clear-button">Wyczyść</button>
+                <div class="buttons">
+                    <button type="button" id="clear-button">Wyczyść</button>
+                    <button type="button" id="save-button">Zapisz</button>
+                </div>
             </form>
         </div>
     </div>
