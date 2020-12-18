@@ -1,17 +1,17 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
+canvas.width = 1008;
+canvas.height = 630;
 
-const chooseImage = document.querySelector('.choose-image');
+const chooseImage = document.querySelector('.choose__image');
 
 
 const save = document.getElementById('save-button');
 const clear = document.getElementById("clear-button");
 const input = document.querySelector('input#tx')
 let tx;
-let setImage = 'ma.jpg';
-const widthCanvas = 1008;
-const heightCanvas = 630;
-const ratio = widthCanvas / heightCanvas;
+let setImage = 'images/ma.jpg';
+
 
 chooseImage.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -19,29 +19,6 @@ chooseImage.addEventListener('click', (e) => {
     draw();
 })
 
-const setWidth = () => {
-    if (window.innerWidth < widthCanvas) {
-        return window.innerWidth
-    }
-}
-
-const setHeight = (ratio) => {
-    if (window.innerWidth < widthCanvas) {
-        return window.innerWidth / ratio
-    }
-}
-
-const setCanvasDimentions = () => {
-    canvas.width = setWidth() || widthCanvas;
-    canvas.height = setHeight(ratio) || heightCanvas;
-}
-
-setCanvasDimentions();
-
-window.addEventListener('resize', () => {
-    setCanvasDimentions();
-    draw();
-})
 
 // live writing
 input.addEventListener('input', (e) => {
@@ -58,21 +35,26 @@ clear.addEventListener('click', (e) => {
     draw();
 })
 
+// timestamp for filename
+let ts = new Date()
+let date = ts.toLocaleDateString().replaceAll(".", "");
+let time = ts.toLocaleTimeString().replaceAll(":", "");
+let stamp = `${date}${time}`;
+
 // save image
 save.addEventListener('click', (e) => {
     if (window.navigator.msSaveBlob) {
-        window.navigator.msSaveBlob(canvas.msToBlob(), 'tvp.jpg');
+        window.navigator.msSaveBlob(canvas.msToBlob(), `tvp-${stamp}.jpg`);
     } else {
         const a = document.createElement('a');
         document.body.appendChild(a);
-        a.href = canvas.toDataURL('image/jpg');
-        a.download = "tvp.jpg";
+        a.href = canvas.toDataURL('image/jpeg');
+        a.download = `tvp-${stamp}.jpg`;
+        debugger
         a.click();
         document.body.removeChild(a);
     }
 })
-
-
 
 // draw image
 const draw = () => {
@@ -94,8 +76,8 @@ const draw = () => {
 //text settings
 const text = (tx) => {
     ctx.fillStyle = '#fff';
-    ctx.font = "40px Arial"
-    ctx.fillText(tx.toUpperCase(), canvas.width / 5.2, canvas.height / 1.227, canvas.width / 1.4);
+    ctx.font = "3rem Arial"
+    ctx.fillText(tx.toUpperCase(), canvas.width / 5.2, canvas.height / 1.22, canvas.width / 1.4);
 }
 
 draw();
