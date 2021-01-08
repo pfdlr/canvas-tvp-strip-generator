@@ -4,6 +4,7 @@ canvas.width = 1008;
 canvas.height = 630;
 
 const chooseImage = document.querySelector('.choose__image');
+const imagesList = document.querySelectorAll('.image__box')
 
 
 const save = document.getElementById('save-button');
@@ -15,6 +16,8 @@ let setImage = 'images/ma.jpg';
 
 chooseImage.addEventListener('click', (e) => {
     e.stopPropagation();
+    imagesList.forEach((image) => image.classList.remove("active"))
+    e.target.parentNode.classList.add("active");
     setImage = e.target.getAttribute('src');
     draw();
 })
