@@ -53,7 +53,6 @@ save.addEventListener('click', (e) => {
         document.body.appendChild(a);
         a.href = canvas.toDataURL('image/jpeg');
         a.download = `tvp-${stamp}.jpg`;
-        debugger
         a.click();
         document.body.removeChild(a);
     }
