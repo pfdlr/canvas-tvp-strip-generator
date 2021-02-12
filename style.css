@@ -52,7 +52,7 @@ body {
 }
 .image__box img {
     max-width: 100%;
-    height: 100%;
+    height: auto;
 }
 .active {
     border-color: red;
